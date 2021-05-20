@@ -33,7 +33,7 @@ def taskList(request):
 def taskDetail(request, pk):
     task = Task.objects.get(pk =pk)
     serializer = TaskSerializer(task)
-    return Response(serializer.data)
+    return Response(serializer.data)  #hdhdjdjd
 
 
 @api_view(['POST'])
