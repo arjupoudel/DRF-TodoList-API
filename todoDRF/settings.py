@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'todoapp',
-    'rest_framework_swagger',
+    'rest_framework_simplejwt'
 ]
 
 MIDDLEWARE = [
@@ -125,8 +125,10 @@ STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ),
+        'rest_framework.permissions.IsAuthenticated',
+    ), # this allows you to only read the infor if you are not logged in or authenticated
 
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+
+    'DEFAULT_AUTHETICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',) # can only authenticate using JWT, permissions classes doesn't help in loggin in without passing JWT 
 }

@@ -38,9 +38,8 @@ def taskDetail(request, pk):
 
 @api_view(['POST'])
 def taskCreate(request):
-    serializer = TaskSerializer(data=request.data) #request.data sends us a JSON Object
-
-    if serializer.is_valid():
+    if 
+        serializer = TaskSerializer(data=request.data) 
         serializer.save()
     else:
         return HttpResponse("Invalid Data")
@@ -50,8 +49,7 @@ def taskCreate(request):
 @api_view(['POST'])
 def taskUpdate(request, pk):
     task = Task.objects.get(id = pk)
-    serializer = TaskSerializer(instance=task, data=request.data) #request.data sends us a JSON Object
-
+    serializer = TaskSerializer(instance=task, data=request.data) 
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
@@ -61,5 +59,4 @@ def taskUpdate(request, pk):
 def taskDelete(request, pk):
     task = Task.objects.get(id = pk)
     task.delete()
-
     return Response("Item Sucessfully Deleted")
